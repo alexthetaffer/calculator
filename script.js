@@ -42,7 +42,7 @@ function operate(operator, a, b){
         case 'multiply':
             return a * b;
         case 'divide':
-            if (b === 0) return `You can't divide by 0.`
+            if (b === 0) return `Division by zero is absolutely forbidden.`
             return a / b;
         case 'remainder':
             return a % b;
@@ -50,12 +50,22 @@ function operate(operator, a, b){
 }
 
 function updateDisplay(number) {
-    if (display.textContent.includes('.') && number.textContent === '.') return;
-    display.textContent += number.textContent;
+    if (display.textContent.includes('.') && number.textContent === '.') return; // Filter out multiple dots
+    if (display.textContent === '0') {
+        if (number.textContent === '0') return; // Filter out multiple lead zeroes.
+        if (number.textContent === '.') {
+            display.textContent = '0.';
+            return;
+        }
+        display.textContent = number.textContent;
+    } else {
+        display.textContent += number.textContent;
+    }
+
 }
 
 function clear() {
-    display.textContent = '';
+    display.textContent = '0';
     a = null;
     b = null;
 }
