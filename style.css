@@ -1,0 +1,100 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* LAYOUT */
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: roboto, sans;
+    margin: 0;
+
+    --primary: #222;
+    --secondary: #4e86ee;
+    --hoverColor: #555;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(5, 80px);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    color: white;
+
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    }
+    
+    #zero {
+        grid-column: span 2;
+    }
+
+    .line {
+        height: 1px;
+        width: 370px;
+        background-color: var(--hoverColor);
+        align-self: center;
+    }
+    
+    .calc-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--primary);
+    }
+    
+    /* BUTTONS */
+
+    .grid-container button {
+        background-color: var(--primary);
+    }
+
+    button.operator, button.equal {
+        /* background-color: var(--secondary); */
+        color: var(--secondary);
+    }
+
+    button {
+        color: white;
+        font-family: roboto, sans;
+        font-size: 38px;
+        padding: 20px 10px;
+        border-style: none;
+    }
+
+    button:active {
+        background-color: orange;
+    }
+
+    button:hover {
+        background-color:#555555;
+    }
+    
+    button#clear, button#backspace {
+        color: var(--secondary)
+    }
+
+    /* SCREEN */
+
+    .screen {
+        height: 120px;
+        background-color: var(--primary);
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+    }
+
+    .display {
+        text-align: right;
+        margin: 0;
+        padding: 5px 20px;
+        color: white;
+        font-size: 36px;
+
+    }
+    
