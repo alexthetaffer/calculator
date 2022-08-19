@@ -54,7 +54,7 @@ body {
         background-color: var(--primary);
     }
 
-    button.operator, button.equal {
+    button.operator, button#equal {
         /* background-color: var(--secondary); */
         color: var(--secondary);
     }
