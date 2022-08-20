@@ -1,5 +1,5 @@
 
-const MAX_LENGTH = 10;
+const MAX_LENGTH = 17;
 
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
@@ -75,6 +75,7 @@ function updateDisplay(number) {
         display.textContent = '0';
         calcStage = 'inputB'
     }
+    if (display.textContent.length >= MAX_LENGTH) return; // Limit max imput length
     if (display.textContent.includes('.') && number.textContent === '.') return; // Filter out multiple dots
     if (display.textContent === '0') {
         if (number.textContent === '0') return; // Filter out multiple lead zeroes.
