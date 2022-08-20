@@ -63,7 +63,7 @@ function operate(operator, a, b){
         case 'multiply':
             return a * b;
         case 'divide':
-            if (b === 0) return `I forbid you divide by 0`
+            if (b === 0) return `I forbid you divide by 0`;
             return a / b;
         case 'remainder':
             return a % b;
@@ -98,4 +98,7 @@ function clear() {
 
 function backspace() {
     display.textContent = display.textContent.slice(0, -1);
+    if (display.textContent === '') {
+        display.textContent = '0';
+    }
 }
