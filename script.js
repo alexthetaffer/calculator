@@ -34,7 +34,7 @@ operators.forEach (operator => {
                 calcStage = 'transitionAB'
             } else if (calcStage === 'transitionAB') {
                 b = parseFloat(display.textContent);
-            } else if (calcStage === 'inputB') { // Chain operations
+            } else if (calcStage === 'inputB' || calcStage === 'gotAnswer') { // Chain operations
                 b = parseFloat(display.textContent);
                 a = operate(operation, a, b);
                 operation = operator.id;
@@ -50,6 +50,7 @@ equal.addEventListener('click', () => {
     b = parseFloat(display.textContent);
     result = operate(operation, a, b);
     display.textContent = result;
+    calcStage = 'gotResult'
 })
 
 // FUNCTIONS
@@ -71,6 +72,9 @@ function operate(operator, a, b){
 }
 
 function updateDisplay(number) {
+    if (calcStage === 'gotResult') {
+        clear();
+    }
     if (calcStage === 'transitionAB') {
         display.textContent = '0';
         calcStage = 'inputB'
