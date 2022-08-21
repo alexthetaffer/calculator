@@ -11,7 +11,6 @@ let a = null;
 let b = null;
 let operation = null;
 let result;
-let displayContent = '';
 
 // LISTENERS
 
@@ -105,5 +104,13 @@ function backspace() {
     display.textContent = display.textContent.slice(0, -1);
     if (display.textContent === '') {
         display.textContent = '0';
+    }
+}
+
+function format(n) {
+    if (n.toString().length < 5) return n;
+
+    if (toString(n).includes('.')) {
+        format(Math.floor(n/10));
     }
 }

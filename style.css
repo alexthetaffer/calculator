@@ -71,7 +71,7 @@ body {
         background-color: orange;
     }
 
-    button:hover {
+    button:active {
         background-color:#555555;
     }
     
