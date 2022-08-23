@@ -14,9 +14,16 @@ let result;
 
 // LISTENERS
 
+window.addEventListener('keydown', (e) => {
+    if (e.key >= 0 && e.key <=9) {
+        console.log(e)
+    }
+    console.log(e.key);
+})
+
 numbers.forEach(number => {
     number.addEventListener('click', () => {
-        updateDisplay(number)
+        updateDisplay(number);
     })
 })
 
@@ -35,7 +42,7 @@ operators.forEach (operator => {
                 b = parseFloat(display.textContent);
             } else if (calcStage === 'inputB' || calcStage === 'gotAnswer') { // Chain operations
                 b = parseFloat(display.textContent);
-                a = operate(operation, a, b);
+                a = format(operate(operation, a, b));
                 operation = operator.id;
                 calcStage = 'transitionAB';
                 display.textContent = a;
@@ -47,7 +54,7 @@ operators.forEach (operator => {
 equal.addEventListener('click', () => {
     if (calcStage !== 'inputB') return;
     b = parseFloat(display.textContent);
-    result = operate(operation, a, b);
+    result = format(operate(operation, a, b));
     display.textContent = result;
     calcStage = 'gotResult'
 })
@@ -108,9 +115,11 @@ function backspace() {
 }
 
 function format(n) {
-    if (n.toString().length < 5) return n;
+    n = n.toString();
+    if (n.length < MAX_LENGTH) return n;
 
-    if (toString(n).includes('.')) {
-        format(Math.floor(n/10));
+    while (n.length > MAX_LENGTH && n.includes('.') && !n.includes('e')) {
+        n = n.slice(0, -1);
     }
+    return n;
 }
